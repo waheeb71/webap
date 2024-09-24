@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta name="description" content="Arab Cyber Security هو موقع متخصص في الأمان السيبراني وحماية المعلومات. يقدم أخبار وتدريبات وتقنيات أمن سيبراني .الجامعة الوطنية.وهيب مهيوب الشرعبي.امن سيبراني .اختراق">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أخبار الأمن السيبراني</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            direction: rtl;
+            text-align: right;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="password"],
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #e90c0c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #c70000;
+        }
+        h2 {
+            color: #333;
+            margin-top: 40px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>أخبار الأمن السيبراني</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="password">كلمة المرور:</label>
+        <input type="password" id="password" name="password" required>
+        <label for="title">العنوان:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="content">المحتوى:</label>
+        <textarea id="content" name="content" required></textarea>
+        <label for="file">صورة (اختياري):</label>
+        <input type="file" id="file" name="file">
+        <button type="submit">رفع الأخبار</button>
+    </form>
+
+    <h2>أحدث الأخبار</h2>
+    <ul>
+        {% for news in news_list %}
+            <li>
+                <h3>{{ news.title }}</h3>
+                <p>{{ news.content }}</p>
+                {% if news.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/' + news.image_filename) }}" alt="{{ news.title }}">
+                {% endif %}
+                <form method="POST" style="display:inline;">
+                    <input type="hidden" name="delete" value="{{ news.id }}">
+                    <button type="submit" onclick="return confirm('هل أنت متأكد أنك تريد حذف هذه الأخبار؟');">حذف</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <button class="back-button" onclick="window.history.back();">عودة إلى السابق</button>
+</body>
+</html>

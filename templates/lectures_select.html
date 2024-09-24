@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        /* تنسيق العناوين */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* تنسيق النموذج */
+        form {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            height: 30px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            height: 30px;
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #337ab7;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #23527c;
+        }
+    </style>
+
+    <h1>اختيار المستوى والفصل</h1>
+    <form method="POST">
+        <label for="level">المستوى:</label>
+        <select name="level" required>
+            <option value="1">السنة الأولى</option>
+            <option value="2">السنة الثانية</option>
+            <option value="3">السنة الثالثة</option>
+            <option value="4">السنة الرابعة</option>
+        </select>
+        <label for="term">الفصل:</label>
+        <select name="term" required>
+            <option value="1">الفصل الأول</option>
+            <option value="2">الفصل الثاني</option>
+        </select>
+        <button type="submit">عرض المحاضرات</button>
+    </form>
+{% endblock %}

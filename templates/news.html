@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta name="description" content="Arab Cyber Security هو موقع متخصص في الأمان السيبراني وحماية المعلومات. يقدم أخبار وتدريبات وتقنيات أمن سيبراني .الجامعة الوطنية.وهيب مهيوب الشرعبي.امن سيبراني .اختراق">
+    <meta name="keywords" content="أمان سيبراني, حماية سيبرانية, أمن المعلومات, تدريب أمن سيبراني, أخبار الأمان السيبراني, تقنيات الأمان السيبراني, أمن الشبكات, أمن البيانات, أمن التطبيقات, أمن المواقع الإلكترونية,الجامعة الوطنية.وهيب مهيوب الشرعبي.امن سيبراني .اختراق">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اعلانات</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #437bc0;
+            direction: rtl;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+        .nav-links {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #e90c0c;
+            color: #ffffff;
+            padding: 1em;
+            text-align: center;
+            z-index: 5;
+        }
+        .nav-links button {
+            background-color: #fff;
+            color: #e90c0c;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .nav-links button:hover {
+            background-color: #f0f0f0;
+        }
+        .news-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 80px; /* To avoid overlap with nav */
+            padding: 0 10px;
+        }
+        .news-item {
+            width: calc(33.33% - 20px); /* Three items in a row */
+            margin: 10px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .news-item:hover {
+            transform: scale(1.05);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .news-item {
+                width: calc(50% - 20px); /* Two items in a row on tablets */
+            }
+        }
+        @media (max-width: 480px) {
+            .news-item {
+                width: 100%; /* One item per row on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-links">
+        <button onclick="window.location.href='{{ url_for('index') }}'">العودة إلى الرئيسية</button>
+        <button onclick="window.location.href='{{ url_for('cybersecurity') }}'">رفع</button>
+    </div>
+    <h1>أخبار</h1>
+    <div class="news-list">
+        {% for news in news_list %}
+            <div class="news-item">
+                <h3>{{ news.title }}</h3>
+                <p>{{ news.content }}</p>
+                {% if news.image_filename %}
+                    <img src="{{ url_for('static', filename='uploads/' + news.image_filename) }}" alt="{{ news.title }}">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

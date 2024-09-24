@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    .form {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+    
+    /* تنسيق العناصر الفرعية في النموذج */
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    /* تنسيق زر الإرسال */
+    button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    </style>
+    <h1>رفع المحاضرة</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">العنوان:</label>
+            <input type="text" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="level">المستوى:</label>
+            <select name="level" required>
+                <option value="1">السنة الأولى</option>
+                <option value="2">السنة الثانية</option>
+                <option value="3">السنة الثالثة</option>
+                <option value="4">السنة الرابعة</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="term">الفصل الدراسي:</label>
+            <select name="term" required>
+                <option value="1">الفصل الأول</option>
+                <option value="2">الفصل الثاني</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="file">الملف:</label>
+            <input type="file" name="file" required>
+        </div>
+
+        <button type="submit">رفع</button>
+    </form>
+
+ 
+{% endblock %}

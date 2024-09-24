@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <meta name="description" content="Arab Cyber Security هو موقع متخصص في الأمان السيبراني وحماية المعلومات. يقدم أخبار وتدريبات وتقنيات أمن سيبراني .الجامعة الوطنية.وهيب مهيوب الشرعبي.امن سيبراني .اختراق">
+</head>
+<body>
+    <h1>Users</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Action</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>
+                <form action="{{ url_for('users') }}" method="post">
+                    <input type="hidden" name="delete" value="{{ user.id }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

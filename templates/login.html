@@ -1,0 +1,103 @@
+
+
+{% block content %}
+    <div class="header">
+        <h2>Arab Cyber Security</h2>
+    </div>
+
+    <div class="login-container">
+        <h1>تسجيل الدخول</h1>
+        <form method="POST" class="login-form">
+            <label for="username">اسم المستخدم:</label>
+            <input type="text" name="username" required>
+            <label for="password">كلمة المرور:</label>
+            <input type="password" name="password" required>
+            <button type="submit">تسجيل الدخول</button>
+            <p>ليس لديك حساب؟ <a href="{{ url_for('register') }}">سجل الآن</a></p>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>برمجة وتصميم وهيب الشرعبي</p>
+    </div>
+{% endblock %}
+
+<style>
+    body {
+        font-family: 'Cairo', sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    .header, .footer {
+        width: 100%;
+        background-color: #007BFF;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: fixed;
+        z-index: 10;
+    }
+    .header {
+        top: 0;
+    }
+    .footer {
+        bottom: 0;
+    }
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1; /* Allow to fill the remaining space */
+        text-align: center;
+        margin-top: 60px; /* Space for header */
+        margin-bottom: 40px; /* Space for footer */
+    }
+    .login-form {
+        background-color: white;
+        padding: 2em;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: right;
+    }
+    .login-form label {
+        display: block;
+        margin-bottom: 0.5em;
+        font-weight: bold;
+    }
+    .login-form input[type="text"], 
+    .login-form input[type="password"] {
+        width: 100%;
+        padding: 0.5em;
+        margin-bottom: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .login-form button {
+        background-color: #007BFF;
+        color: white;
+        padding: 0.7em;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s;
+    }
+    .login-form button:hover {
+        background-color: #0056b3;
+    }
+    .login-form p {
+        margin-top: 1em;
+    }
+    .login-form a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+    .login-form a:hover {
+        text-decoration: underline;
+    }
+</style>

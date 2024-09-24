@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        /* تنسيق العناوين */
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* تنسيق قائمة المحاضرات */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #f7f7f7;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li strong {
+            font-size: 18px;
+            color: #337ab7;
+        }
+
+        ul li a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* تنسيق الروابط */
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #337ab7;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+        }
+
+        a:hover {
+            background-color: #337ab7;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* تنسيق الأزرار */
+        button {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #337ab7;
+            background-color: #f7f7f7;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #337ab7;
+            color: #fff;
+        }
+    </style>
+
+    <h1>محاضراتك</h1>
+    <h2>المستوى {{ level }}, الفصل {{ term }}</h2>
+    <ul>
+        {% for lecture in lectures %}
+            <li>
+                <strong>{{ lecture.title }}</strong> - <a href="{{ url_for('static', filename='uploads/' + lecture.filename) }}">تحميل</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <button><a href="{{ url_for('upload') }}">تحميل محاضرة جديدة</a></button>
+    <button><a href="{{ url_for('lectures') }}">اختيار مستوى وفصل مختلف</a></button>
+{% endblock %}

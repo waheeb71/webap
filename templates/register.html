@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta name="description" content="Arab Cyber Security هو موقع متخصص في الأمان السيبراني وحماية المعلومات. يقدم أخبار وتدريبات وتقنيات أمن سيبراني .الجامعة الوطنية.وهيب مهيوب الشرعبي.امن سيبراني .اختراق">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .header, .footer {
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            z-index: 10;
+        }
+        .header {
+            top: 0;
+        }
+        .footer {
+            bottom: 0;
+        }
+        .stats {
+            text-align: center;
+            margin: 60px 0 20px; /* Ensure space for header */
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Set a fixed width for the form */
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .login-link {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .login-link button {
+            background-color: transparent;
+            color: #007BFF;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .login-link button:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Arab Cyber Security</h2>
+    </div>
+
+    <div class="stats">
+        عدد المستخدمين: {{ user_count }} | عدد الزوار: {{ visitor_count }}
+    </div>
+    
+    <h1>إنشاء حساب</h1>
+    <form method="POST">
+        <label for="username">اسم المستخدم:</label>
+        <input type="text" name="username" required>
+        
+        <label for="password">كلمة المرور:</label>
+        <input type="password" name="password" required>
+        
+        <button type="submit">تسجيل</button>
+    </form>
+
+    <div class="login-link">
+        <button onclick="window.location.href='/login';">لدي حساب</button>
+    </div>
+
+    <div class="footer">
+        <p>برمجة وتصميم وهيب الشرعبي</p>
+        
+    </div>
+</body>
+</html>
