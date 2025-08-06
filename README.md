@@ -79,7 +79,7 @@ http://127.0.0.1:5000/
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is released into the public domain under [The Unlicense](LICENSE).
 
 ---
 
